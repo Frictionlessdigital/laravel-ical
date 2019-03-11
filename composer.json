@@ -1,0 +1,57 @@
+{
+    "name": "frictionlessdigital/laravel-ical",
+    "type": "library",
+    "description": "Laravel warraper for creating iCalendars.",
+    "keywords": [
+        "frictionlessdigital",
+        "iCal",
+        "ics"
+    ],
+    "homepage": "https://github.com/frictionlessdigital/laravel-ical",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cyrill N Kalita",
+            "email": "cyrill@frictionlesssolutions.com",
+            "homepage": "https://github.com/nickfls"
+        }
+    ],
+    "repositories": [],
+    "require": {
+        "php" : "~7.2",
+        "eluceo/ical":"^0.15",
+        "illuminate/support": "~5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~6.5",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Betta\\LaravelIcal\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Betta\\LaravelIcal\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Betta\\LaravelIcal\\ICalendarServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
