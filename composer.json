@@ -18,9 +18,9 @@
     ],
     "repositories": [],
     "require": {
-        "php" : "^7.2",
+        "php" : "^7.3",
         "eluceo/ical":"^0.16",
-        "illuminate/support": "^7.0"
+        "illuminate/support": "^8.0"
     },
     "require-dev": {
     },
@@ -41,7 +41,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "7.0-dev"
+            "dev-master": "8.0-dev"
         },
         "laravel": {
             "providers": [
