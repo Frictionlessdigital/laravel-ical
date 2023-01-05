@@ -46,8 +46,8 @@
         }
     },
     "repositories": [],
-    "prefer-stable": true,
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "analyze": "docker run --interactive --tty --rm -v $PWD:/app ghcr.io/phpstan/phpstan --memory-limit=4G analyze src",
         "fix": "docker run --interactive --tty --rm -v $(pwd):/data cytopia/php-cs-fixer --ansi --verbose --show-progress=dots fix src",
