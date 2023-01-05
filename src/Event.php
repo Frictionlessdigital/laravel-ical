@@ -5,13 +5,14 @@ namespace Betta\LaravelIcal;
 use Betta\LaravelIcal\Contracts\Event as EventContract;
 use Eluceo\iCal\Component\Event as BaseEvent;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Arr;
 
 class Event extends BaseEvent implements EventContract, Renderable
 {
     /**
      * Build the Calendar
      *
-     * @var Betta\LaravelIcal\Calendar
+     * @var \Betta\LaravelIcal\Calendar
      */
     private $calendar;
 
@@ -61,7 +62,7 @@ class Event extends BaseEvent implements EventContract, Renderable
      * @param  string|null $product_id
      * @param  string|null $unique_id
      *
-     * @return new static
+     * @return static
      */
     public static function make(string $product_id = null, string $unique_id = null)
     {
@@ -81,19 +82,19 @@ class Event extends BaseEvent implements EventContract, Renderable
     {
         $paramaters['mailto'] = $email_address;
 
-        if (!array_has($paramaters, 'CUTYPE')) {
+        if (!Arr::has($paramaters, 'CUTYPE')) {
             $paramaters['CUTYPE'] = 'INDIVIDUAL';
         }
 
-        if (!array_has($paramaters, 'ROLE')) {
+        if (!Arr::has($paramaters, 'ROLE')) {
             $paramaters['ROLE'] = 'REQ-PARTICIPANT';
         }
 
-        if (!array_has($paramaters, 'PARTSTAT')) {
+        if (!Arr::has($paramaters, 'PARTSTAT')) {
             $paramaters['PARTSTAT'] = 'NEEDS-ACTION';
         }
 
-        if (!array_has($paramaters, 'RSVP')) {
+        if (!Arr::has($paramaters, 'RSVP')) {
             $paramaters['RSVP'] = 'TRUE';
         }
 
@@ -129,12 +130,9 @@ class Event extends BaseEvent implements EventContract, Renderable
     }
 
     /**
-     * Set organizer.
-     *
      * @param int $time
-     * @param array  $paramaters
-     *
-     * @return Event
+     * @param array $parameters
+     * @return $this
      */
     public function addAlarm($time = 0, $parameters = [])
     {
@@ -146,9 +144,9 @@ class Event extends BaseEvent implements EventContract, Renderable
     }
 
     /**
-     * Set a calendar property.
-     *
-     * @return Event
+     * @param string $method
+     * @param mixed $value
+     * @return $this
      */
     public function setCalendar($method, $value)
     {
@@ -228,9 +226,7 @@ class Event extends BaseEvent implements EventContract, Renderable
     }
 
     /**
-     * Set the method to counter.
-     *
-     * @return Event
+     * @return $this
      */
     public function setDeclineCounterMethod()
     {
@@ -238,12 +234,8 @@ class Event extends BaseEvent implements EventContract, Renderable
     }
 
     /**
-     * Download the event ics.
-     *
-     * @param string $product_id
      * @param string $filename
-     *
-     * @return string
+     * @return mixed
      */
     public function download($filename = 'ical')
     {

@@ -23,12 +23,13 @@ class Alarm extends BaseAlarm
     /**
      * Create new Alarm instance
      *
-     * @return new static
+     * @param array $parameters
+     * @return static
      */
     public static function make($parameters = [])
     {
         # create new instance
-        $alarm = new static;
+        $alarm = new static();
         # if provided description
         foreach (static::$properties as $property) {
             # If we can get the value

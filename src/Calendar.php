@@ -11,7 +11,7 @@ class Calendar extends BaseCalendar
     /**
      * Create new instance of Calendar
      *
-     * @param string $prodId
+     * @param string|null $prodId
      */
     public function __construct($prodId)
     {
@@ -28,6 +28,7 @@ class Calendar extends BaseCalendar
      *
      * @param Component $component The Component that will be added
      * @param null      $key       The key of the Component
+     * @return $this
      */
     public function addComponent(Component $component, $key = null)
     {
