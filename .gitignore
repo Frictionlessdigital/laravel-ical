@@ -1,8 +1,6 @@
-/vendor
-.idea/
-
+.php-cs-fixer.cache
 composer.lock
-
-# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+.idea/
 .rocketeer/
 /nbproject/private/
+/vendor

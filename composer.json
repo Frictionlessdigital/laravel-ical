@@ -1,6 +1,6 @@
 {
     "name": "frictionlessdigital/laravel-ical",
-    "type": "library",
+    "type": "package",
     "description": "Laravel warraper for creating iCalendars.",
     "keywords": [
         "frictionlessdigital",
@@ -20,7 +20,7 @@
     "require": {
         "php" : "^7.3||^8.0",
         "eluceo/ical":"^0.16",
-        "illuminate/support": "^8.0"
+        "illuminate/support": "^8.0||^9.0"
     },
     "require-dev": {
     },
@@ -34,14 +34,16 @@
             "Betta\\LaravelIcal\\": "tests"
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
-        "test": "phpunit",
-        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
-        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+        "analyze": "docker run --interactive --tty --rm -v $PWD:/app ghcr.io/phpstan/phpstan --memory-limit=4G analyze src",
+        "fix": "docker run --interactive --tty --rm -v $(pwd):/data cytopia/php-cs-fixer --ansi --verbose --show-progress=dots fix src",
+        "test": "phpunit"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "8.0-dev"
+            "dev-master": "9.x-dev"
         },
         "laravel": {
             "providers": [
