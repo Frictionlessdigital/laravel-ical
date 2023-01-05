@@ -16,30 +16,14 @@
             "homepage": "https://github.com/nickfls"
         }
     ],
-    "repositories": [],
     "require": {
-        "php" : "^7.3||^8.0",
-        "eluceo/ical":"^0.16",
-        "illuminate/support": "^8.0||^9.0"
+        "php": "^7.3 || ^8.0",
+        "eluceo/ical": "^0.16",
+        "illuminate/support": "^8.0 || ^9.0"
     },
-    "require-dev": {
-    },
-    "autoload": {
-        "psr-4": {
-            "Betta\\LaravelIcal\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Betta\\LaravelIcal\\": "tests"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "analyze": "docker run --interactive --tty --rm -v $PWD:/app ghcr.io/phpstan/phpstan --memory-limit=4G analyze src",
-        "fix": "docker run --interactive --tty --rm -v $(pwd):/data cytopia/php-cs-fixer --ansi --verbose --show-progress=dots fix src",
-        "test": "phpunit"
+    "require-dev": {},
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
@@ -51,7 +35,22 @@
             ]
         }
     },
-    "config": {
-        "sort-packages": true
+    "autoload": {
+        "psr-4": {
+            "Betta\\LaravelIcal\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Betta\\LaravelIcal\\": "tests"
+        }
+    },
+    "repositories": [],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "scripts": {
+        "analyze": "docker run --interactive --tty --rm -v $PWD:/app ghcr.io/phpstan/phpstan --memory-limit=4G analyze src",
+        "fix": "docker run --interactive --tty --rm -v $(pwd):/data cytopia/php-cs-fixer --ansi --verbose --show-progress=dots fix src",
+        "test": "phpunit"
     }
 }
