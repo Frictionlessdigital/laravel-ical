@@ -4,7 +4,6 @@ namespace Betta\LaravelIcal;
 
 use Eluceo\iCal\Component;
 use Eluceo\iCal\Component\Calendar as BaseCalendar;
-use Eluceo\iCal\Component\Event;
 
 class Calendar extends BaseCalendar
 {
@@ -15,9 +14,9 @@ class Calendar extends BaseCalendar
      */
     public function __construct($prodId)
     {
-        # If not provided, assume application name
+        // If not provided, assume application name
         $prodId = $prodId ?: config('app.name');
-        # Defer to parent
+        // Defer to parent
         parent::__construct($prodId);
     }
 
@@ -27,7 +26,7 @@ class Calendar extends BaseCalendar
      * If $key is given, the component at $key will be replaced else the component will be append.
      *
      * @param Component $component The Component that will be added
-     * @param null      $key       The key of the Component
+     * @param null $key The key of the Component
      * @return $this
      */
     public function addComponent(Component $component, $key = null)

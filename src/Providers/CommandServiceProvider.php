@@ -9,7 +9,7 @@ class CommandServiceProvider extends ServiceProvider
     /**
      * List Commands to register
      *
-     * @var Array
+     * @var array
      */
     protected $commands = [
     ];

@@ -12,7 +12,7 @@ class Event extends BaseEvent implements EventContract, Renderable
     /**
      * Build the Calendar
      *
-     * @var \Betta\LaravelIcal\Calendar
+     * @var Calendar
      */
     private $calendar;
 
@@ -24,11 +24,11 @@ class Event extends BaseEvent implements EventContract, Renderable
      *
      * @return $this
      */
-    public function __construct(string $product_id = null, string $unique_id = null)
+    public function __construct(?string $product_id = null, ?string $unique_id = null)
     {
-        # Create parent event
+        // Create parent event
         parent::__construct($unique_id);
-        # Set the calendar
+        // Set the calendar
         $this->calendar = new Calendar($product_id);
         $this->calendar->setCalendarScale(Calendar::CALSCALE_GREGORIAN);
         $this->setPublishMethod();
@@ -59,12 +59,12 @@ class Event extends BaseEvent implements EventContract, Renderable
     /**
      * Static method to create new instance
      *
-     * @param  string|null $product_id
-     * @param  string|null $unique_id
+     * @param string|null $product_id
+     * @param string|null $unique_id
      *
      * @return static
      */
-    public static function make(string $product_id = null, string $unique_id = null)
+    public static function make(?string $product_id = null, ?string $unique_id = null)
     {
         return new static($product_id, $unique_id);
     }
@@ -74,7 +74,7 @@ class Event extends BaseEvent implements EventContract, Renderable
      *
      * @param string $email_address
      * @param string $name
-     * @param array  $paramaters
+     * @param array $paramaters
      *
      * @return Event
      */
@@ -82,19 +82,19 @@ class Event extends BaseEvent implements EventContract, Renderable
     {
         $paramaters['mailto'] = $email_address;
 
-        if (!Arr::has($paramaters, 'CUTYPE')) {
+        if (! Arr::has($paramaters, 'CUTYPE')) {
             $paramaters['CUTYPE'] = 'INDIVIDUAL';
         }
 
-        if (!Arr::has($paramaters, 'ROLE')) {
+        if (! Arr::has($paramaters, 'ROLE')) {
             $paramaters['ROLE'] = 'REQ-PARTICIPANT';
         }
 
-        if (!Arr::has($paramaters, 'PARTSTAT')) {
+        if (! Arr::has($paramaters, 'PARTSTAT')) {
             $paramaters['PARTSTAT'] = 'NEEDS-ACTION';
         }
 
-        if (!Arr::has($paramaters, 'RSVP')) {
+        if (! Arr::has($paramaters, 'RSVP')) {
             $paramaters['RSVP'] = 'TRUE';
         }
 
@@ -102,7 +102,7 @@ class Event extends BaseEvent implements EventContract, Renderable
             $name = $email_address;
         }
 
-        parent::addAttendee('CN='.$name, $paramaters);
+        parent::addAttendee('CN=' . $name, $paramaters);
 
         return $this;
     }
@@ -112,7 +112,7 @@ class Event extends BaseEvent implements EventContract, Renderable
      *
      * @param string $email_address
      * @param string $name
-     * @param array  $paramaters
+     * @param array $paramaters
      *
      * @return Event
      */
@@ -124,7 +124,7 @@ class Event extends BaseEvent implements EventContract, Renderable
             $name = $email_address;
         }
 
-        parent::setOrganizer(new Organizer('CN='.$name, $paramaters));
+        parent::setOrganizer(new Organizer('CN=' . $name, $paramaters));
 
         return $this;
     }
@@ -136,7 +136,7 @@ class Event extends BaseEvent implements EventContract, Renderable
      */
     public function addAlarm($time = 0, $parameters = [])
     {
-        $alarm = Alarm::make($parameters)->setTrigger('-PT'.$time.'M');
+        $alarm = Alarm::make($parameters)->setTrigger('-PT' . $time . 'M');
 
         $this->addComponent($alarm);
 
@@ -150,7 +150,7 @@ class Event extends BaseEvent implements EventContract, Renderable
      */
     public function setCalendar($method, $value)
     {
-        $this->calendar->{'set'.$method}($value);
+        $this->calendar->{'set' . $method}($value);
 
         return $this;
     }
@@ -243,7 +243,7 @@ class Event extends BaseEvent implements EventContract, Renderable
 
         return response($contents)->withHeaders([
             'Content-Type' => 'text/calendar; charset=utf-8',
-            'Content-Disposition' => 'attachment; filename="'.$filename.'.ics"',
+            'Content-Disposition' => 'attachment; filename="' . $filename . '.ics"',
         ]);
     }
 }

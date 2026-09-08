@@ -1,5 +1,5 @@
 {
-    "name": "Laravel Exportify",
+    "name": "Development Container"
     "build": {
         "dockerfile": "Dockerfile",
         "context": "."
