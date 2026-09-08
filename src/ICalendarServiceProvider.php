@@ -18,23 +18,19 @@ class ICalendarServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $baseDir = __DIR__.'/../';
+    protected $baseDir = __DIR__ . '/../';
 
     /**
      * Perform post-registration booting of services.
      *
      * @return void
      */
-    public function boot()
-    {
-    }
+    public function boot() {}
 
     /**
      * Register any package services.
      *
      * @return void
      */
-    public function register()
-    {
-    }
+    public function register() {}
 }

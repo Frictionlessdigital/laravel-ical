@@ -28,17 +28,18 @@ class Alarm extends BaseAlarm
      */
     public static function make($parameters = [])
     {
-        # create new instance
+        // create new instance
         $alarm = new static();
-        # if provided description
+        // if provided description
         foreach (static::$properties as $property) {
-            # If we can get the value
+            // If we can get the value
             if ($value = Arr::get($parameters, $property)) {
-                # call method
-                $alarm->{'set'.$property}($value);
+                // call method
+                $alarm->{'set' . $property}($value);
             }
         }
-        # return
+
+        // return
         return $alarm;
     }
 }
